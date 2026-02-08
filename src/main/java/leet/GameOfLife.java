@@ -1,3 +1,5 @@
+package leet;
+
 class GameOfLife {
     public void gameOfLife(int[][] board) {
         int rows = board.length;
