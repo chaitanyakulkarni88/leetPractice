@@ -1,4 +1,4 @@
-/**
+package stack; /**
  * LeetCode Problem: 71. Simplify Path
  *
  * Time Complexity: O(n)
