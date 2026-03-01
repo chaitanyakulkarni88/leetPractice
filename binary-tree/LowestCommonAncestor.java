@@ -8,7 +8,7 @@
  * 1. If root is null or equals p or q → return root.
  * 2. Recursively search left and right.
  * 3. If both sides return non-null → root is LCA.
- * 4. Otherwise return the non-null side.
+ * 4. Otherwise, return the non-null side.
  */
 public class LowestCommonAncestor {
 
