@@ -1,0 +1,51 @@
+/**
+ * LeetCode Problem: 124. Binary Tree Maximum Path Sum
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(h)
+ *
+ * Core Idea:
+ * 1. Post-order traversal.
+ * 2. For each node:
+ *      - Compute max gain from left and right (ignore negatives).
+ *      - Update global maximum using node as highest point.
+ *      - Return max single-branch gain to parent.
+ */
+public class BinaryTreeMaximumPathSum {
+
+    private static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+    }
+
+    private static int maxSum;
+
+    public static int maxPathSum(TreeNode root) {
+
+        maxSum = Integer.MIN_VALUE;
+        maxGain(root);
+
+        return maxSum;
+    }
+
+    private static int maxGain(TreeNode node) {
+
+        if (node == null) {
+            return 0;
+        }
+
+        int leftGain = Math.max(maxGain(node.left), 0);
+        int rightGain = Math.max(maxGain(node.right), 0);
+
+        int currentPathSum = node.val + leftGain + rightGain;
+
+        maxSum = Math.max(maxSum, currentPathSum);
+
+        return node.val + Math.max(leftGain, rightGain);
+    }
+}
