@@ -47,7 +47,7 @@ Each problem includes:
 
 ## Progress
 
-- ✅ Java – In Progress
+- ✅ Java – Completed
 - 🔄 Go – Planned
 
 ---
