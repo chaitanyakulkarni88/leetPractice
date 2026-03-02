@@ -31,6 +31,8 @@ The goal is to master core data structures and algorithms frequently tested in t
 - Math
 - 1D Dynamic Programming
 - Multidimensional DP
+- Search algorithms (Linear, Binary)
+- Sort algorithms (Bubble, Counting, Insertion, Merge, Quick, Selection)
 
 ---
 
