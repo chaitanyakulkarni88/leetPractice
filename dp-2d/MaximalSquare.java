@@ -5,21 +5,85 @@ public class MaximalSquare {
     /*
      * LeetCode Problem: 221 - Maximal Square
      *
-     * Time Complexity  : O(m * n)
-     * Space Complexity : O(n)
+     * Time Complexity:
+     * 2D DP           : O(m * n)
+     * Optimized 1D DP : O(m * n)
+     *
+     * Space Complexity:
+     * 2D DP           : O(m * n)
+     * Optimized 1D DP : O(n)
+     *
+     * m = rows
+     * n = columns
+     *
+     * Problem:
+     * Given a binary matrix filled with '0' and '1',
+     * find the largest square containing only '1's
+     * and return its area.
      *
      * Core Idea:
-     * 1. dp[j] represents the side length of the largest square
-     *    ending at current row and column j.
-     * 2. If matrix[i][j] == '1':
-     *      dp[j] = min(top, left, top-left) + 1
-     * 3. Track maximum side length.
-     * 4. Return maxSide * maxSide (area).
+     * Let dp[i][j] represent the side length of the largest
+     * square ending at cell (i, j).
      *
-     * Algorithm Pattern: Grid DP
+     * If matrix[i][j] == '1':
+     *
+     *      dp[i][j] = min(
+     *          dp[i-1][j],    // top
+     *          dp[i][j-1],    // left
+     *          dp[i-1][j-1]   // diagonal
+     *      ) + 1
+     *
+     * If matrix[i][j] == '0':
+     *      dp[i][j] = 0
+     *
+     * Track the maximum side length and return side².
+     *
+     * Algorithm Pattern:
+     * Grid Dynamic Programming
      */
 
-    public static int maximalSquare(char[][] matrix) {
+    /* -----------------------------------------------------
+       Approach 1: Simple 2D Dynamic Programming
+       ----------------------------------------------------- */
+
+    public static int maximalSquare2D(char[][] matrix) {
+
+        if (matrix == null || matrix.length == 0 ||
+                matrix[0].length == 0) {
+            return 0;
+        }
+
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        int[][] dp = new int[rows + 1][cols + 1];
+
+        int maxSide = 0;
+
+        for (int i = 1; i <= rows; i++) {
+
+            for (int j = 1; j <= cols; j++) {
+
+                if (matrix[i - 1][j - 1] == '1') {
+
+                    dp[i][j] = Math.min(
+                            Math.min(dp[i - 1][j], dp[i][j - 1]),
+                            dp[i - 1][j - 1]
+                    ) + 1;
+
+                    maxSide = Math.max(maxSide, dp[i][j]);
+                }
+            }
+        }
+
+        return maxSide * maxSide;
+    }
+
+    /* -----------------------------------------------------
+       Approach 2: Space Optimized 1D Dynamic Programming
+       ----------------------------------------------------- */
+
+    public static int maximalSquare1D(char[][] matrix) {
 
         if (matrix == null || matrix.length == 0 ||
                 matrix[0].length == 0) {
@@ -42,13 +106,16 @@ public class MaximalSquare {
                 int temp = dp[j];
 
                 if (matrix[i - 1][j - 1] == '1') {
+
                     dp[j] = Math.min(
                             Math.min(dp[j], dp[j - 1]),
                             prevDiagonal
                     ) + 1;
 
                     maxSide = Math.max(maxSide, dp[j]);
+
                 } else {
+
                     dp[j] = 0;
                 }
 
@@ -77,8 +144,16 @@ public class MaximalSquare {
                 {'0'}
         };
 
-        System.out.println("Example 1 → " + maximalSquare(matrix1));
-        System.out.println("Example 2 → " + maximalSquare(matrix2));
-        System.out.println("Example 3 → " + maximalSquare(matrix3));
+        System.out.println("Using 2D DP:");
+        System.out.println("Example 1 → " + maximalSquare2D(matrix1));
+        System.out.println("Example 2 → " + maximalSquare2D(matrix2));
+        System.out.println("Example 3 → " + maximalSquare2D(matrix3));
+
+        System.out.println();
+
+        System.out.println("Using 1D Optimized DP:");
+        System.out.println("Example 1 → " + maximalSquare1D(matrix1));
+        System.out.println("Example 2 → " + maximalSquare1D(matrix2));
+        System.out.println("Example 3 → " + maximalSquare1D(matrix3));
     }
 }
