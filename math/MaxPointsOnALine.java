@@ -8,31 +8,85 @@ public class MaxPointsOnALine {
      * Time Complexity  : O(n^2)
      * Space Complexity : O(n)
      *
-     * Core Idea:
-     * 1. Fix one point as anchor.
-     * 2. Compute slope with every other point.
-     * 3. Normalize slope using GCD (dy/gcd, dx/gcd).
-     * 4. Count frequency of each slope.
-     * 5. Handle duplicates separately.
+     * Problem:
+     * Find the maximum number of points that lie on the same straight line.
      *
-     * Algorithm Pattern: Hashing + Mathematical Normalization
+     * Key Idea:
+     * Fix one point as an anchor and compute slopes with all other points.
+     * Points with the same slope lie on the same line.
+     *
+     * Approaches:
+     * 1. Simple Double Slope (easier but floating precision risk)
+     * 2. GCD Normalized Slope (correct mathematical solution)
+     *
+     * Algorithm Pattern:
+     * HashMap + Geometry
      */
 
-    public static int maxPoints(int[][] points) {
+    /* -----------------------------------------------------
+       Approach 1: Simple Double Slope (Easier)
+       ----------------------------------------------------- */
 
-        if (points == null || points.length == 0) {
-            return 0;
-        }
+    public static int maxPointsSimple(int[][] points) {
 
         if (points.length <= 2) {
             return points.length;
         }
 
-        int maxPoints = 0;
+        int result = 0;
 
         for (int i = 0; i < points.length; i++) {
 
-            Map<String, Integer> slopeCount = new HashMap<>();
+            Map<Double, Integer> slopeMap = new HashMap<>();
+            int vertical = 0;
+            int duplicates = 1;
+            int localMax = 0;
+
+            for (int j = i + 1; j < points.length; j++) {
+
+                int x1 = points[i][0];
+                int y1 = points[i][1];
+                int x2 = points[j][0];
+                int y2 = points[j][1];
+
+                if (x1 == x2 && y1 == y2) {
+                    duplicates++;
+                }
+                else if (x1 == x2) {
+                    vertical++;
+                    localMax = Math.max(localMax, vertical);
+                }
+                else {
+
+                    double slope = (double)(y2 - y1) / (x2 - x1);
+
+                    slopeMap.put(slope, slopeMap.getOrDefault(slope, 0) + 1);
+
+                    localMax = Math.max(localMax, slopeMap.get(slope));
+                }
+            }
+
+            result = Math.max(result, localMax + duplicates);
+        }
+
+        return result;
+    }
+
+    /* -----------------------------------------------------
+       Approach 2: GCD Normalized Slope (More Accurate)
+       ----------------------------------------------------- */
+
+    public static int maxPointsGCD(int[][] points) {
+
+        if (points.length <= 2) {
+            return points.length;
+        }
+
+        int result = 0;
+
+        for (int i = 0; i < points.length; i++) {
+
+            Map<String, Integer> slopeMap = new HashMap<>();
             int duplicates = 1;
             int localMax = 0;
 
@@ -47,25 +101,33 @@ public class MaxPointsOnALine {
                 }
 
                 int gcd = gcd(dx, dy);
+
                 dx /= gcd;
                 dy /= gcd;
 
                 String slope = dy + "/" + dx;
 
-                slopeCount.put(slope, slopeCount.getOrDefault(slope, 0) + 1);
-                localMax = Math.max(localMax, slopeCount.get(slope));
+                slopeMap.put(slope, slopeMap.getOrDefault(slope, 0) + 1);
+
+                localMax = Math.max(localMax, slopeMap.get(slope));
             }
 
-            maxPoints = Math.max(maxPoints, localMax + duplicates);
+            result = Math.max(result, localMax + duplicates);
         }
 
-        return maxPoints;
+        return result;
     }
 
+    /* -----------------------------------------------------
+       Utility: GCD Function
+       ----------------------------------------------------- */
+
     private static int gcd(int a, int b) {
+
         if (b == 0) {
             return Math.abs(a);
         }
+
         return gcd(b, a % b);
     }
 
@@ -75,8 +137,16 @@ public class MaxPointsOnALine {
         int[][] points2 = {{1,1}, {3,2}, {5,3}, {4,1}, {2,3}, {1,4}};
         int[][] points3 = {{0,0}, {0,0}, {0,0}};
 
-        System.out.println("Example 1 → " + maxPoints(points1));
-        System.out.println("Example 2 → " + maxPoints(points2));
-        System.out.println("Example 3 → " + maxPoints(points3));
+        System.out.println("Using Simple Double Slope:");
+        System.out.println("Example 1 → " + maxPointsSimple(points1));
+        System.out.println("Example 2 → " + maxPointsSimple(points2));
+        System.out.println("Example 3 → " + maxPointsSimple(points3));
+
+        System.out.println();
+
+        System.out.println("Using GCD Normalized Slope:");
+        System.out.println("Example 1 → " + maxPointsGCD(points1));
+        System.out.println("Example 2 → " + maxPointsGCD(points2));
+        System.out.println("Example 3 → " + maxPointsGCD(points3));
     }
 }
