@@ -5,21 +5,34 @@ public class KthLargestElement {
     /*
      * LeetCode Problem: 215 - Kth Largest Element in an Array
      *
-     * Time Complexity  : O(n) average, O(n^2) worst-case
-     * Space Complexity : O(1)
+     * Time Complexity:
+     * Quickselect : O(n) average, O(n^2) worst-case
+     * Min Heap    : O(n log k)
+     *
+     * Space Complexity:
+     * Quickselect : O(1)
+     * Min Heap    : O(k)
+     *
+     * Problem:
+     * Find the kth largest element in an unsorted array.
      *
      * Core Idea:
-     * 1. Convert kth largest to (n - k)th smallest index.
-     * 2. Use Quickselect (partial QuickSort).
-     * 3. Partition around pivot.
-     * 4. Recurse only on relevant side.
+     * Convert kth largest to (n - k)th smallest element
+     * and use Quickselect (partial QuickSort).
      *
-     * Algorithm Pattern: Quickselect
+     * Algorithm Patterns:
+     * 1. Quickselect (selection algorithm)
+     * 2. Min Heap (Top-K pattern)
      */
 
-    public static int findKthLargest(int[] nums, int k) {
+    /* -----------------------------------------------------
+       Approach 1: Quickselect (Optimal Average Case)
+       ----------------------------------------------------- */
 
-        if (nums == null || nums.length == 0 || k <= 0 || k > nums.length) {
+    public static int findKthLargestQuickselect(int[] nums, int k) {
+
+        if (nums == null || nums.length == 0 ||
+                k <= 0 || k > nums.length) {
             throw new IllegalArgumentException("Invalid input.");
         }
 
@@ -39,9 +52,11 @@ public class KthLargestElement {
 
             if (pivotIndex == targetIndex) {
                 return nums[pivotIndex];
-            } else if (pivotIndex < targetIndex) {
+            }
+            else if (pivotIndex < targetIndex) {
                 left = pivotIndex + 1;
-            } else {
+            }
+            else {
                 right = pivotIndex - 1;
             }
         }
@@ -55,6 +70,7 @@ public class KthLargestElement {
         int storeIndex = left;
 
         for (int i = left; i < right; i++) {
+
             if (nums[i] < pivot) {
                 swap(nums, storeIndex, i);
                 storeIndex++;
@@ -66,7 +82,33 @@ public class KthLargestElement {
         return storeIndex;
     }
 
+    /* -----------------------------------------------------
+       Approach 2: Min Heap (Simpler Alternative)
+       ----------------------------------------------------- */
+
+    public static int findKthLargestHeap(int[] nums, int k) {
+
+        if (nums == null || nums.length == 0 ||
+                k <= 0 || k > nums.length) {
+            throw new IllegalArgumentException("Invalid input.");
+        }
+
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        for (int num : nums) {
+
+            minHeap.offer(num);
+
+            if (minHeap.size() > k) {
+                minHeap.poll();
+            }
+        }
+
+        return minHeap.peek();
+    }
+
     private static void swap(int[] nums, int i, int j) {
+
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
@@ -77,10 +119,18 @@ public class KthLargestElement {
         int[] nums1 = {3, 2, 1, 5, 6, 4};
         int[] nums2 = {3, 2, 3, 1, 2, 4, 5, 5, 6};
 
-        System.out.println("Array 1: " + Arrays.toString(nums1));
-        System.out.println("K = 2 → " + findKthLargest(nums1, 2));
+        System.out.println("Using Quickselect:");
+        System.out.println("Array 1 → " +
+                findKthLargestQuickselect(nums1.clone(), 2));
+        System.out.println("Array 2 → " +
+                findKthLargestQuickselect(nums2.clone(), 4));
 
-        System.out.println("\nArray 2: " + Arrays.toString(nums2));
-        System.out.println("K = 4 → " + findKthLargest(nums2, 4));
+        System.out.println();
+
+        System.out.println("Using Min Heap:");
+        System.out.println("Array 1 → " +
+                findKthLargestHeap(nums1, 2));
+        System.out.println("Array 2 → " +
+                findKthLargestHeap(nums2, 4));
     }
 }
