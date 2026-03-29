@@ -32,13 +32,22 @@ public class ConstructTreeFromInorderPostorder {
 
     public static void main(String[] args) {
 
-        int[] inorder = {9, 3, 15, 20, 7};
-        int[] postorder = {9, 15, 7, 20, 3};
+        int[] inorder1 = {9, 3, 15, 20, 7};
+        int[] postorder1 = {9, 15, 7, 20, 3};
 
-        TreeNode root = buildTree(inorder, postorder);
+        TreeNode root1 = buildTree(inorder1, postorder1);
 
-        System.out.print("Level order: ");
-        printLevelOrder(root);
+        System.out.print("Test Case 1 (Level Order): ");
+        printLevelOrder(root1); // Expected: 3 9 20 15 7
+
+
+        int[] inorder2 = {2, 1, 3};
+        int[] postorder2 = {2, 3, 1};
+
+        TreeNode root2 = buildTree(inorder2, postorder2);
+
+        System.out.print("Test Case 2 (Level Order): ");
+        printLevelOrder(root2); // Expected: 1 2 3
     }
 
     public static TreeNode buildTree(int[] inorder, int[] postorder) {
@@ -55,13 +64,10 @@ public class ConstructTreeFromInorderPostorder {
             inorderIndexMap.put(inorder[i], i);
         }
 
-        return build(inorder, postorder, 0, inorder.length - 1);
+        return build(postorder, 0, inorder.length - 1);
     }
 
-    private static TreeNode build(int[] inorder,
-                                  int[] postorder,
-                                  int left,
-                                  int right) {
+    private static TreeNode build(int[] postorder, int left, int right) {
 
         if (left > right) {
             return null;
@@ -72,9 +78,8 @@ public class ConstructTreeFromInorderPostorder {
 
         int inorderIndex = inorderIndexMap.get(rootVal);
 
-        // Build right subtree first
-        root.right = build(inorder, postorder, inorderIndex + 1, right);
-        root.left = build(inorder, postorder, left, inorderIndex - 1);
+        root.right = build(postorder, inorderIndex + 1, right);
+        root.left = build(postorder, left, inorderIndex - 1);
 
         return root;
     }

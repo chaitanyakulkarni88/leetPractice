@@ -60,4 +60,23 @@ public class SumRootToLeafNumbers {
 
         return totalSum;
     }
+
+    public static void main(String[] args) {
+
+        TreeNode root1 = new TreeNode(1);
+        root1.left = new TreeNode(2);
+        root1.right = new TreeNode(3);
+
+        System.out.println("Test Case 1 (Expected 25): "
+                + sumNumbers(root1));
+
+        TreeNode root2 = new TreeNode(4);
+        root2.left = new TreeNode(9);
+        root2.right = new TreeNode(0);
+        root2.left.left = new TreeNode(5);
+        root2.left.right = new TreeNode(1);
+
+        System.out.println("Test Case 2 (Expected 1026): "
+                + sumNumbers(root2));
+    }
 }

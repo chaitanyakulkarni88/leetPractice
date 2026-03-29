@@ -39,4 +39,38 @@ public class LowestCommonAncestor {
 
         return (left != null) ? left : right;
     }
+
+    public static void main(String[] args) {
+
+        TreeNode root1 = buildTree();
+
+        TreeNode p1 = root1.left;      // 5
+        TreeNode q1 = root1.right;     // 1
+
+        TreeNode lca1 = lowestCommonAncestor(root1, p1, q1);
+        System.out.println("Test Case 1 LCA (Expected 3): " + lca1.val);
+
+
+        TreeNode p2 = root1.left;          // 5
+        TreeNode q2 = root1.left.right.right; // 4
+
+        TreeNode lca2 = lowestCommonAncestor(root1, p2, q2);
+        System.out.println("Test Case 2 LCA (Expected 5): " + lca2.val);
+    }
+
+    private static TreeNode buildTree() {
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(5);
+        root.right = new TreeNode(1);
+
+        root.left.left = new TreeNode(6);
+        root.left.right = new TreeNode(2);
+        root.right.left = new TreeNode(0);
+        root.right.right = new TreeNode(8);
+
+        root.left.right.left = new TreeNode(7);
+        root.left.right.right = new TreeNode(4);
+
+        return root;
+    }
 }

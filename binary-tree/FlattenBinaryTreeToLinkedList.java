@@ -27,11 +27,28 @@ public class FlattenBinaryTreeToLinkedList {
 
     public static void main(String[] args) {
 
-        TreeNode root = buildSampleTree();
+        TreeNode root1 = buildSampleTree();
 
-        flatten(root);
+        System.out.print("Before (Preorder): ");
+        printPreorder(root1);
 
-        printRightChain(root);
+        flatten(root1);
+
+        System.out.print("After (Flattened): ");
+        printRightChain(root1); // Expected: 1 -> 2 -> 3 -> 4 -> 5 -> 6
+
+
+        TreeNode root2 = new TreeNode(1);
+        root2.left = new TreeNode(2);
+        root2.left.left = new TreeNode(3);
+
+        System.out.print("\nBefore (Preorder): ");
+        printPreorder(root2);
+
+        flatten(root2);
+
+        System.out.print("After (Flattened): ");
+        printRightChain(root2); // Expected: 1 -> 2 -> 3
     }
 
     public static void flatten(TreeNode root) {
@@ -69,6 +86,13 @@ public class FlattenBinaryTreeToLinkedList {
         root.left.right = new TreeNode(4);
         root.right.right = new TreeNode(6);
         return root;
+    }
+
+    private static void printPreorder(TreeNode root) {
+        if (root == null) return;
+        System.out.print(root.val + " ");
+        printPreorder(root.left);
+        printPreorder(root.right);
     }
 
     private static void printRightChain(TreeNode root) {

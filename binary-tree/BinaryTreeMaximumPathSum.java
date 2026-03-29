@@ -48,4 +48,21 @@ public class BinaryTreeMaximumPathSum {
 
         return node.val + Math.max(leftGain, rightGain);
     }
+
+    public static void main(String[] args) {
+
+        TreeNode root1 = new TreeNode(-10);
+        root1.left = new TreeNode(9);
+        root1.right = new TreeNode(20);
+        root1.right.left = new TreeNode(15);
+        root1.right.right = new TreeNode(7);
+
+        System.out.println("Test Case 1 (Expected 42): " + maxPathSum(root1));
+
+        TreeNode root2 = new TreeNode(2);
+        root2.left = new TreeNode(-1);
+        root2.right = new TreeNode(3);
+
+        System.out.println("Test Case 2 (Expected 5): " + maxPathSum(root2));
+    }
 }

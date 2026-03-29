@@ -27,20 +27,33 @@ public class InvertBinaryTree {
 
     public static void main(String[] args) {
 
-        TreeNode root = buildSampleTree();
+        TreeNode root1 = buildSampleTree();
 
-        System.out.print("Original: ");
-        printLevelOrder(root);
+        System.out.print("Original (Test 1): ");
+        printLevelOrder(root1);
 
-        invertTreeDFS(root);
+        invertTreeDFS(root1);
 
         System.out.print("Inverted (DFS): ");
-        printLevelOrder(root);
+        printLevelOrder(root1);
 
-        invertTreeBFS(root);
+        invertTreeBFS(root1);
 
         System.out.print("Inverted Back (BFS): ");
-        printLevelOrder(root);
+        printLevelOrder(root1);
+
+
+        TreeNode root2 = new TreeNode(1);
+        root2.left = new TreeNode(2);
+        root2.left.left = new TreeNode(3);
+
+        System.out.print("\nOriginal (Test 2): ");
+        printLevelOrder(root2);
+
+        invertTreeDFS(root2);
+
+        System.out.print("Inverted (DFS): ");
+        printLevelOrder(root2);
     }
 
     // Recursive DFS
@@ -49,6 +62,7 @@ public class InvertBinaryTree {
             return null;
         }
 
+        // swap
         TreeNode temp = root.left;
         root.left = root.right;
         root.right = temp;

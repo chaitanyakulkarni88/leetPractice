@@ -32,13 +32,22 @@ public class ConstructTreeFromPreorderInorder {
 
     public static void main(String[] args) {
 
-        int[] preorder = {3, 9, 20, 15, 7};
-        int[] inorder = {9, 3, 15, 20, 7};
+        int[] preorder1 = {3, 9, 20, 15, 7};
+        int[] inorder1 = {9, 3, 15, 20, 7};
 
-        TreeNode root = buildTree(preorder, inorder);
+        TreeNode root1 = buildTree(preorder1, inorder1);
 
-        System.out.print("Level order: ");
-        printLevelOrder(root);
+        System.out.print("Test Case 1 (Level Order): ");
+        printLevelOrder(root1); // Expected: 3 9 20 15 7
+
+
+        int[] preorder2 = {1, 2, 4, 5, 3};
+        int[] inorder2 = {4, 2, 5, 1, 3};
+
+        TreeNode root2 = buildTree(preorder2, inorder2);
+
+        System.out.print("Test Case 2 (Level Order): ");
+        printLevelOrder(root2); // Expected: 1 2 3 4 5
     }
 
     public static TreeNode buildTree(int[] preorder, int[] inorder) {
