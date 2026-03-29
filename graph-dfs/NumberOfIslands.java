@@ -70,4 +70,26 @@ public class NumberOfIslands {
                 && c >= 0 && c < grid[0].length
                 && grid[r][c] == '1';
     }
+
+    public static void main(String[] args) {
+
+        char[][] grid1 = {
+                {'1','1','1','1','0'},
+                {'1','1','0','1','0'},
+                {'1','1','0','0','0'},
+                {'0','0','0','0','0'}
+        };
+
+        System.out.println("Test Case 1 (Expected 1): " + numIslands(grid1));
+
+
+        char[][] grid2 = {
+                {'1','1','0','0','0'},
+                {'1','1','0','0','0'},
+                {'0','0','1','0','0'},
+                {'0','0','0','1','1'}
+        };
+
+        System.out.println("Test Case 2 (Expected 3): " + numIslands(grid2));
+    }
 }

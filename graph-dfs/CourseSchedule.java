@@ -64,4 +64,24 @@ public class CourseSchedule {
 
         return processed == numCourses;
     }
+
+    public static void main(String[] args) {
+
+        int numCourses1 = 2;
+        int[][] prerequisites1 = {
+                {1, 0}
+        };
+
+        boolean result1 = canFinish(numCourses1, prerequisites1);
+        System.out.println("Test Case 1 (No cycle): " + result1); // Expected: true
+
+        int numCourses2 = 2;
+        int[][] prerequisites2 = {
+                {1, 0},
+                {0, 1}
+        };
+
+        boolean result2 = canFinish(numCourses2, prerequisites2);
+        System.out.println("Test Case 2 (Cycle): " + result2); // Expected: false
+    }
 }

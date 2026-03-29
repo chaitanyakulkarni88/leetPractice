@@ -66,4 +66,30 @@ public class CourseScheduleII {
 
         return (index == numCourses) ? order : new int[0];
     }
+
+    public static void main(String[] args) {
+
+        int numCourses1 = 4;
+        int[][] prerequisites1 = {
+                {1, 0},
+                {2, 0},
+                {3, 1},
+                {3, 2}
+        };
+
+        int[] result1 = findOrder(numCourses1, prerequisites1);
+        System.out.println("Test Case 1 (Valid order): " + Arrays.toString(result1));
+        // Possible output: [0,1,2,3] OR [0,2,1,3]
+
+
+        int numCourses2 = 2;
+        int[][] prerequisites2 = {
+                {1, 0},
+                {0, 1}
+        };
+
+        int[] result2 = findOrder(numCourses2, prerequisites2);
+        System.out.println("Test Case 2 (Cycle): " + Arrays.toString(result2));
+        // Expected: []
+    }
 }

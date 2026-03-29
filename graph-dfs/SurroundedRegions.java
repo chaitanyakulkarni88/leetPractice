@@ -12,6 +12,7 @@
  */
 import java.util.ArrayDeque;
 import java.util.Queue;
+import java.util.Arrays;
 
 public class SurroundedRegions {
 
@@ -80,5 +81,45 @@ public class SurroundedRegions {
         return r >= 0 && r < board.length
                 && c >= 0 && c < board[0].length
                 && board[r][c] == 'O';
+    }
+
+    // Helper to print board
+    private static void printBoard(char[][] board) {
+        for (char[] row : board) {
+            System.out.println(Arrays.toString(row));
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+
+        char[][] board1 = {
+                {'X','X','X','X'},
+                {'X','O','O','X'},
+                {'X','X','O','X'},
+                {'X','O','X','X'}
+        };
+
+        System.out.println("Before (Test Case 1):");
+        printBoard(board1);
+
+        solve(board1);
+
+        System.out.println("After (Test Case 1):");
+        printBoard(board1);
+
+
+        char[][] board2 = {
+                {'O','O'},
+                {'O','O'}
+        };
+
+        System.out.println("Before (Test Case 2):");
+        printBoard(board2);
+
+        solve(board2);
+
+        System.out.println("After (Test Case 2):");
+        printBoard(board2);
     }
 }

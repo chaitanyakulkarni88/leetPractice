@@ -98,4 +98,41 @@ public class EvaluateDivision {
 
         return -1.0;
     }
+
+    public static void main(String[] args) {
+
+        List<List<String>> equations1 = Arrays.asList(
+                Arrays.asList("a", "b"),
+                Arrays.asList("b", "c")
+        );
+
+        double[] values1 = {2.0, 3.0};
+
+        List<List<String>> queries1 = Arrays.asList(
+                Arrays.asList("a", "c"), // 6.0
+                Arrays.asList("b", "a"), // 0.5
+                Arrays.asList("a", "e"), // -1.0
+                Arrays.asList("a", "a"), // 1.0
+                Arrays.asList("x", "x")  // -1.0
+        );
+
+        double[] result1 = calcEquation(equations1, values1, queries1);
+        System.out.println("Test Case 1: " + Arrays.toString(result1));
+
+        List<List<String>> equations2 = Arrays.asList(
+                Arrays.asList("x", "y"),
+                Arrays.asList("y", "z")
+        );
+
+        double[] values2 = {4.0, 5.0};
+
+        List<List<String>> queries2 = Arrays.asList(
+                Arrays.asList("x", "z"), // 20.0
+                Arrays.asList("z", "x"), // 1/20
+                Arrays.asList("x", "a")  // -1.0
+        );
+
+        double[] result2 = calcEquation(equations2, values2, queries2);
+        System.out.println("Test Case 2: " + Arrays.toString(result2));
+    }
 }
