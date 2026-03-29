@@ -75,4 +75,22 @@ public class MinimumGeneticMutation {
 
         return -1;
     }
+
+    public static void main(String[] args) {
+
+        String start1 = "AACCGGTT";
+        String end1 = "AACCGGTA";
+        String[] bank1 = {"AACCGGTA"};
+
+        System.out.println("Test Case 1 (Expected 1): "
+                + minMutation(start1, end1, bank1));
+
+
+        String start2 = "AACCGGTT";
+        String end2 = "AAACGGTA";
+        String[] bank2 = {"AACCGGTA", "AACCGCTA", "AAACGGTA"};
+
+        System.out.println("Test Case 2 (Expected 2): "
+                + minMutation(start2, end2, bank2));
+    }
 }

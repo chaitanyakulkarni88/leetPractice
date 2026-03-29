@@ -75,4 +75,22 @@ public class WordLadder {
 
         return 0;
     }
+
+    public static void main(String[] args) {
+
+        String begin1 = "hit";
+        String end1 = "cog";
+        List<String> wordList1 = Arrays.asList("hot","dot","dog","lot","log","cog");
+
+        System.out.println("Test Case 1 (Expected 5): "
+                + ladderLength(begin1, end1, wordList1));
+
+
+        String begin2 = "hit";
+        String end2 = "cog";
+        List<String> wordList2 = Arrays.asList("hot","dot","dog","lot","log");
+
+        System.out.println("Test Case 2 (Expected 0): "
+                + ladderLength(begin2, end2, wordList2));
+    }
 }

@@ -78,4 +78,28 @@ public class SnakesAndLadders {
 
         return new int[]{row, col};
     }
+
+    public static void main(String[] args) {
+
+        int[][] board1 = {
+                {-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1},
+                {-1,-1,-1,-1,-1,-1},
+                {-1,35,-1,-1,13,-1},
+                {-1,-1,-1,-1,-1,-1},
+                {-1,15,-1,-1,-1,-1}
+        };
+
+        System.out.println("Test Case 1 (Expected 4): "
+                + snakesAndLadders(board1));
+
+
+        int[][] board2 = {
+                {-1,-1},
+                {-1,3}
+        };
+
+        System.out.println("Test Case 2 (Expected 1): "
+                + snakesAndLadders(board2));
+    }
 }
