@@ -80,4 +80,26 @@ public class WordDictionary {
             return dfs(word, index + 1, node.children[childIndex]);
         }
     }
+
+    public static void main(String[] args) {
+
+        WordDictionary dict = new WordDictionary();
+
+        dict.addWord("bad");
+        dict.addWord("dad");
+        dict.addWord("mad");
+
+        System.out.println("search(\"pad\") Expected false: " + dict.search("pad"));
+        System.out.println("search(\"bad\") Expected true: " + dict.search("bad"));
+        System.out.println("search(\".ad\") Expected true: " + dict.search(".ad"));
+        System.out.println("search(\"b..\") Expected true: " + dict.search("b.."));
+
+        dict.addWord("cat");
+        dict.addWord("car");
+
+        System.out.println("search(\"c.t\") Expected true: " + dict.search("c.t"));
+        System.out.println("search(\"ca.\") Expected true: " + dict.search("ca."));
+        System.out.println("search(\"c..\") Expected true: " + dict.search("c.."));
+        System.out.println("search(\"dog\") Expected false: " + dict.search("dog"));
+    }
 }

@@ -78,4 +78,27 @@ public class Trie {
 
         return node;
     }
+
+    public static void main(String[] args) {
+
+        Trie trie = new Trie();
+
+        trie.insert("apple");
+
+        System.out.println("search(\"apple\") Expected true: " + trie.search("apple"));
+        System.out.println("search(\"app\") Expected false: " + trie.search("app"));
+        System.out.println("startsWith(\"app\") Expected true: " + trie.startsWith("app"));
+
+        trie.insert("app");
+
+        System.out.println("search(\"app\") Expected true: " + trie.search("app"));
+
+        trie.insert("bat");
+        trie.insert("ball");
+
+        System.out.println("search(\"bat\") Expected true: " + trie.search("bat"));
+        System.out.println("search(\"ba\") Expected false: " + trie.search("ba"));
+        System.out.println("startsWith(\"ba\") Expected true: " + trie.startsWith("ba"));
+        System.out.println("search(\"bad\") Expected false: " + trie.search("bad"));
+    }
 }

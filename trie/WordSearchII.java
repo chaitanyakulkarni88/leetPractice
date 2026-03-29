@@ -97,4 +97,31 @@ public class WordSearchII {
 
         board[r][c] = ch;
     }
+
+    public static void main(String[] args) {
+
+        char[][] board1 = {
+                {'o','a','a','n'},
+                {'e','t','a','e'},
+                {'i','h','k','r'},
+                {'i','f','l','v'}
+        };
+
+        String[] words1 = {"oath","pea","eat","rain"};
+
+        WordSearchII solver1 = new WordSearchII();
+        System.out.println("Test Case 1 (Expected [oath, eat]): "
+                + solver1.findWords(board1, words1));
+
+        char[][] board2 = {
+                {'a','b'},
+                {'c','d'}
+        };
+
+        String[] words2 = {"abcb", "abcd", "acdb"};
+
+        WordSearchII solver2 = new WordSearchII();
+        System.out.println("Test Case 2 (Expected [acdb]): "
+                + solver2.findWords(board2, words2));
+    }
 }
