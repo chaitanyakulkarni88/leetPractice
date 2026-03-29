@@ -56,4 +56,25 @@ public class AverageOfLevels {
 
         return result;
     }
+
+    public static void main(String[] args) {
+
+        TreeNode root1 = new TreeNode(3);
+        root1.left = new TreeNode(9);
+        root1.right = new TreeNode(20);
+        root1.right.left = new TreeNode(15);
+        root1.right.right = new TreeNode(7);
+
+        System.out.println("Test Case 1 (Expected [3.0, 14.5, 11.0]): "
+                + averageOfLevels(root1));
+
+        TreeNode root2 = new TreeNode(1);
+        root2.left = new TreeNode(2);
+        root2.right = new TreeNode(3);
+        root2.left.left = new TreeNode(4);
+        root2.right.right = new TreeNode(5);
+
+        System.out.println("Test Case 2 (Expected [1.0, 2.5, 4.5]): "
+                + averageOfLevels(root2));
+    }
 }

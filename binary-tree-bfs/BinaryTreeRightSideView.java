@@ -55,4 +55,23 @@ public class BinaryTreeRightSideView {
 
         return result;
     }
+
+    public static void main(String[] args) {
+
+        TreeNode root1 = new TreeNode(1);
+        root1.left = new TreeNode(2);
+        root1.right = new TreeNode(3);
+        root1.left.right = new TreeNode(5);
+        root1.right.right = new TreeNode(4);
+
+        System.out.println("Test Case 1 (Expected [1, 3, 4]): "
+                + rightSideView(root1));
+
+        TreeNode root2 = new TreeNode(1);
+        root2.left = new TreeNode(2);
+        root2.left.left = new TreeNode(3);
+
+        System.out.println("Test Case 2 (Expected [1, 2, 3]): "
+                + rightSideView(root2));
+    }
 }
