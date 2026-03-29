@@ -56,4 +56,23 @@ public class MinimumAbsoluteDifferenceBST {
 
         return minDiff;
     }
+
+    public static void main(String[] args) {
+
+        TreeNode root1 = new TreeNode(4);
+        root1.left = new TreeNode(2);
+        root1.right = new TreeNode(6);
+        root1.left.left = new TreeNode(1);
+        root1.left.right = new TreeNode(3);
+
+        System.out.println("Test Case 1 (Expected 1): "
+                + getMinimumDifference(root1));
+
+        TreeNode root2 = new TreeNode(1);
+        root2.right = new TreeNode(3);
+        root2.right.left = new TreeNode(2);
+
+        System.out.println("Test Case 2 (Expected 1): "
+                + getMinimumDifference(root2));
+    }
 }
