@@ -43,7 +43,7 @@ public class PlusOne {
 
         int[] digits1 = {1, 2, 3};
         int[] digits2 = {4, 3, 2, 1};
-        int[] digits3 = {9};
+        int[] digits3 = {8, 9};
         int[] digits4 = {9, 9, 9};
 
         System.out.println("Input 1: " + Arrays.toString(digits1));
