@@ -17,8 +17,11 @@ public class HappyNumber {
     public static void main(String[] args) {
         HappyNumber solution = new HappyNumber();
 
-        int n = 2;
-        System.out.println(solution.isHappy(n));
+        int n1 = 2;
+        System.out.println(solution.isHappy(n1));
+
+        int n2 = 19;
+        System.out.println(solution.isHappy(n2));
     }
 
     public boolean isHappy(int n) {

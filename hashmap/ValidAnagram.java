@@ -15,10 +15,15 @@ public class ValidAnagram {
     public static void main(String[] args) {
         ValidAnagram solution = new ValidAnagram();
 
-        String s = "anagram";
-        String t = "nagaram";
+        String s1 = "anagram";
+        String t1 = "nagaram";
 
-        System.out.println(solution.isAnagram(s, t));
+        System.out.println(solution.isAnagram(s1, t1));
+
+        String s2 = "rat";
+        String t2 = "car";
+
+        System.out.println(solution.isAnagram(s2, t2));
     }
 
     public boolean isAnagram(String s, String t) {

@@ -19,10 +19,15 @@ public class IsomorphicStrings {
     public static void main(String[] args) {
         IsomorphicStrings solution = new IsomorphicStrings();
 
-        String s = "badc";
-        String t = "baba";
+        String s1 = "paper";
+        String t1 = "title";
 
-        System.out.println(solution.isIsomorphic(s, t));
+        System.out.println(solution.isIsomorphic(s1, t1));
+
+        String s2 = "badc";
+        String t2 = "baba";
+
+        System.out.println(solution.isIsomorphic(s2, t2));
     }
 
     public boolean isIsomorphic(String s, String t) {

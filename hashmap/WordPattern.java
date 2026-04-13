@@ -19,10 +19,15 @@ public class WordPattern {
     public static void main(String[] args) {
         WordPattern solution = new WordPattern();
 
-        String pattern = "abc";
-        String s = "b c a";
+        String pattern1 = "abc";
+        String s1 = "b c a";
 
-        System.out.println(solution.wordPattern(pattern, s));
+        System.out.println(solution.wordPattern(pattern1, s1));
+
+        String pattern2 = "abba";
+        String s2 = "dog cat cat fish";
+
+        System.out.println(solution.wordPattern(pattern2, s2));
     }
 
     public boolean wordPattern(String pattern, String s) {

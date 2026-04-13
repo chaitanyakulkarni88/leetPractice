@@ -14,10 +14,15 @@ public class RansomNote {
     public static void main(String[] args) {
         RansomNote solution = new RansomNote();
 
-        String ransomNote = "aab";
-        String magazine = "baa";
+        String ransomNote1 = "aa";
+        String magazine1 = "baa";
 
-        System.out.println(solution.canConstruct(ransomNote, magazine));
+        System.out.println(solution.canConstruct(ransomNote1, magazine1));
+
+        String ransomNote2 = "aa";
+        String magazine2 = "baa";
+
+        System.out.println(solution.canConstruct(ransomNote2, magazine2));
     }
 
     public boolean canConstruct(String ransomNote, String magazine) {

@@ -17,10 +17,15 @@ public class ContainsDuplicateII {
     public static void main(String[] args) {
         ContainsDuplicateII solution = new ContainsDuplicateII();
 
-        int[] nums = {1, 0, 1, 1};
-        int k = 1;
+        int[] nums1 = {1, 0, 1, 1};
+        int k1 = 1;
 
-        System.out.println(solution.containsNearbyDuplicate(nums, k));
+        System.out.println(solution.containsNearbyDuplicate(nums1, k1));
+
+        int[] nums2 = {1, 2, 3, 1, 2, 3};
+        int k2 = 1;
+
+        System.out.println(solution.containsNearbyDuplicate(nums2, k2));
     }
 
     public boolean containsNearbyDuplicate(int[] nums, int k) {
