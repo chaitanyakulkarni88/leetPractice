@@ -19,11 +19,17 @@ public class MinimumNumberArrowsBurstBalloons {
         MinimumNumberArrowsBurstBalloons solution =
                 new MinimumNumberArrowsBurstBalloons();
 
-        int[][] points = {
+        int[][] points1 = {
                 {10, 16}, {2, 8}, {1, 6}, {7, 12}
         };
 
-        System.out.println(solution.findMinArrowShots(points));
+        System.out.println(solution.findMinArrowShots(points1));
+
+        int[][] points2 = {
+                {1, 2}, {3, 4}, {5, 6}, {7, 18}
+        };
+
+        System.out.println(solution.findMinArrowShots(points2));
     }
 
     public int findMinArrowShots(int[][] points) {
