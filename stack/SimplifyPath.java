@@ -19,8 +19,11 @@ public class SimplifyPath {
     public static void main(String[] args) {
         SimplifyPath solution = new SimplifyPath();
 
-        String path = "/home/user/Documents/../Pictures";
-        System.out.println(solution.simplifyPath(path));
+        String path1 = "/home/user/Documents/../Pictures";
+        System.out.println(solution.simplifyPath(path1));
+
+        String path2 = "/.../a/../b/c/../d/./";
+        System.out.println(solution.simplifyPath(path2));
     }
 
     public String simplifyPath(String path) {

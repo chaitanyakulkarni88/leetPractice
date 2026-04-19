@@ -14,7 +14,7 @@
  *      - main stack for values
  *      - min stack to track current minimum
  * 2. Push to min stack when new value ≤ current min.
- * 3. Pop from min stack when popped value equals current min.
+ * 3. Pop from main stack and min stack when popped value equals current min.
  */
 import java.util.ArrayDeque;
 import java.util.Deque;

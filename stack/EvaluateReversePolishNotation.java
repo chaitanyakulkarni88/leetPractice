@@ -23,8 +23,13 @@ public class EvaluateReversePolishNotation {
                 "10","6","9","3","+","-11","*","/","*","17","+","5","+"
         };
 
-        int result = solution.evalRPN(tokens);
-        System.out.println(result);
+        System.out.println(solution.evalRPN(tokens));
+
+        String[] tokens2 = {
+                "4","13","5","/","+"
+        };
+
+        System.out.println(solution.evalRPN(tokens2));
     }
 
     public int evalRPN(String[] tokens) {

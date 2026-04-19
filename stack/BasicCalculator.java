@@ -18,10 +18,13 @@ public class BasicCalculator {
     public static void main(String[] args) {
         BasicCalculator solution = new BasicCalculator();
 
-        String expression = "(1+(4+5+2)-3)+(6+8)";
-        int result = solution.calculate(expression);
+        String expression1 = "2-1+2";
 
-        System.out.println(result);
+        System.out.println(solution.calculate(expression1));
+
+        String expression2 = "(1+(4+5+2)-3)+(6+8)";
+
+        System.out.println(solution.calculate(expression2));
     }
 
     public int calculate(String s) {

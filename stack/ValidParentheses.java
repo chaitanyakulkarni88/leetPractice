@@ -18,8 +18,11 @@ public class ValidParentheses {
     public static void main(String[] args) {
         ValidParentheses solution = new ValidParentheses();
 
-        String s = "()";
-        System.out.println(solution.isValid(s));
+        String s1 = "([])";
+        System.out.println(solution.isValid(s1));
+
+        String s2 = "([)]";
+        System.out.println(solution.isValid(s2));
     }
 
     public boolean isValid(String s) {
