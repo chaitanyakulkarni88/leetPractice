@@ -50,5 +50,10 @@ public class MergeSortedArrays {
         int[] nums4 = {1};
         merge(nums3, 0, nums4, 1);
         System.out.println(Arrays.toString(nums3));
+
+        int[] nums5 = {7, 8, 9, 0, 0, 0};
+        int[] nums6 = {2, 5, 6};
+        merge(nums5, 3, nums6, 3);
+        System.out.println(Arrays.toString(nums5));
     }
 }
