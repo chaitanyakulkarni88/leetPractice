@@ -85,5 +85,14 @@ public class SpiralMatrix {
 
         System.out.println(solution.spiralOrder(matrix1));
         // [1,2,3,6,9,8,7,4,5]
+
+        int[][] matrix2 = {
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12}
+        };
+
+        System.out.println(solution.spiralOrder(matrix2));
+        // [1,2,3,4,8,12,11,10,9,5,6,7]
     }
 }

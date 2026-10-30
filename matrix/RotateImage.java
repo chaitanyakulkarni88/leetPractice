@@ -23,6 +23,17 @@ public class RotateImage {
         solution.rotate(matrix);
 
         printMatrix(matrix);
+
+        int[][] matrix2 = {
+                {5, 1, 9, 11},
+                {2, 4, 8, 10},
+                {13, 3, 6, 7},
+                {15, 14, 12, 16}
+        };
+
+        solution.rotate(matrix2);
+
+        printMatrix(matrix2);
     }
 
     public void rotate(int[][] matrix) {
