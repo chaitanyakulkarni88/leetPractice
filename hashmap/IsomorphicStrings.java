@@ -19,15 +19,25 @@ public class IsomorphicStrings {
     public static void main(String[] args) {
         IsomorphicStrings solution = new IsomorphicStrings();
 
+        // Valid mapping (existing mapping is consistent) Expected: true
         String s1 = "paper";
         String t1 = "title";
-
         System.out.println(solution.isIsomorphic(s1, t1));
 
+        // Reverse mapping conflict Expected: false
         String s2 = "badc";
         String t2 = "baba";
-
         System.out.println(solution.isIsomorphic(s2, t2));
+
+        // Forward mapping conflict Expected: false
+        String s3 = "foo";
+        String t3 = "bar";
+        System.out.println(solution.isIsomorphic(s3, t3));
+
+        // Mixed characters Expected: true
+        String s4 = "a1a";
+        String t4 = "b2b";
+        System.out.println(solution.isIsomorphic(s4, t4));
     }
 
     public boolean isIsomorphic(String s, String t) {

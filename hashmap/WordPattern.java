@@ -19,15 +19,24 @@ public class WordPattern {
     public static void main(String[] args) {
         WordPattern solution = new WordPattern();
 
+        //Valid patterns - consistent mappings Expected: true
         String pattern1 = "abc";
         String s1 = "b c a";
-
         System.out.println(solution.wordPattern(pattern1, s1));
 
         String pattern2 = "abba";
-        String s2 = "dog cat cat fish";
-
+        String s2 = "dog cat cat dog";
         System.out.println(solution.wordPattern(pattern2, s2));
+
+        //Forward mapping conflict Expected: false
+        String pattern3 = "abba";
+        String s3 = "dog cat cat fish";
+        System.out.println(solution.wordPattern(pattern3, s3));
+
+        //Different word count and pattern length Expected: false
+        String pattern4 = "abc";
+        String s4 = "dog cat";
+        System.out.println(solution.wordPattern(pattern4, s4));
     }
 
     public boolean wordPattern(String pattern, String s) {
