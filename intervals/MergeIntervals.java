@@ -30,6 +30,16 @@ public class MergeIntervals {
         for (int[] interval : merged) {
             System.out.println(Arrays.toString(interval));
         }
+
+        int[][] intervals2 = {
+                {4, 7}, {1, 4}
+        };
+
+        int[][] merged2 = solution.merge(intervals2);
+
+        for (int[] interval : merged2) {
+            System.out.println(Arrays.toString(interval));
+        }
     }
 
     public int[][] merge(int[][] intervals) {

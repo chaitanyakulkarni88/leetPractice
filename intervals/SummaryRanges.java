@@ -38,6 +38,7 @@ public class SummaryRanges {
 
             if (i == nums.length || nums[i] != nums[i - 1] + 1) {
 
+
                 if (start == nums[i - 1]) {
                     result.add(String.valueOf(start));
                 } else {
