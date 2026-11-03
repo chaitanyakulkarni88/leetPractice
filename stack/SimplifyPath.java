@@ -24,6 +24,12 @@ public class SimplifyPath {
 
         String path2 = "/.../a/../b/c/../d/./";
         System.out.println(solution.simplifyPath(path2));
+
+        String path3 = "/home//foo/";
+        System.out.println(solution.simplifyPath(path3));
+
+        String path4 = "/../";
+        System.out.println(solution.simplifyPath(path4));
     }
 
     public String simplifyPath(String path) {

@@ -23,6 +23,9 @@ public class ValidParentheses {
 
         String s2 = "([)]";
         System.out.println(solution.isValid(s2));
+
+        String s3 = ")([]";
+        System.out.println(solution.isValid(s3));
     }
 
     public boolean isValid(String s) {
